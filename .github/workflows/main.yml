@@ -27,6 +27,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Lint code
+      run: |
+        flake8
+        black --check .
+        isort --check .
+
     - name: Run tests
       run: pytest
 
@@ -34,14 +40,5 @@ jobs:
       run: |
         coverage run -m pytest
         coverage xml
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage.xml
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: true
 
         
