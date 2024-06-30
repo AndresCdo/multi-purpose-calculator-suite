@@ -52,7 +52,8 @@ def calculate_final_grade(scores: Dict[str, float]) -> float:
     }
     return sum(scores[category] * weight for category, weight in weights.items())
 
-def convert_grade_to_letter(grade: float) -> str:
+
+def calculate_grade(grade: float) -> str:
     """
     Converts a numeric grade to a letter grade.
     
@@ -62,6 +63,10 @@ def convert_grade_to_letter(grade: float) -> str:
     Returns:
         str: The corresponding letter grade.
     """
+    try:
+        grade = float(grade)
+    except ValueError:
+        return "Invalid grade format"
     if grade <= 2:
         return "E"
     elif grade <= 3:
@@ -72,8 +77,10 @@ def convert_grade_to_letter(grade: float) -> str:
         return "B"
     elif grade <= 4.5:
         return "B+"
-    else:
+    elif grade <= 5:
         return "A"
+    else:
+        return "Invalid grade range"
 
 def main() -> None:
     """
@@ -89,8 +96,8 @@ def main() -> None:
     }
     
     final_grade = calculate_final_grade(scores)
-    letter_grade = convert_grade_to_letter(final_grade)
-    
+    letter_grade = calculate_grade(final_grade)
+
     print(f"\nFinal Grade: {final_grade:.2f}")
     print(f"Letter Grade: {letter_grade}")
 
