@@ -10,10 +10,11 @@ Author: AndresCdo
 import sys
 from typing import Dict, Tuple
 
+
 def get_valid_salary() -> float:
     """
     Prompts the user for a valid salary input.
-    
+
     Returns:
         float: A positive, non-zero salary value.
     """
@@ -27,13 +28,14 @@ def get_valid_salary() -> float:
         except ValueError:
             print("Invalid input. Please enter a numeric value.")
 
+
 def calculate_expenses(salary: float) -> Dict[str, float]:
     """
     Calculates expense distribution based on the given salary.
-    
+
     Args:
         salary (float): The total salary amount.
-    
+
     Returns:
         Dict[str, float]: A dictionary containing expense categories and their amounts.
     """
@@ -44,35 +46,38 @@ def calculate_expenses(salary: float) -> Dict[str, float]:
         "Books": 0.1 * salary,
     }
 
+
 def calculate_rent(salary: float, expenses: Dict[str, float]) -> float:
     """
     Calculates the remaining amount for rent after other expenses.
-    
+
     Args:
         salary (float): The total salary amount.
         expenses (Dict[str, float]): Dictionary of other expenses.
-    
+
     Returns:
         float: The amount left for rent.
     """
     return salary - sum(expenses.values())
 
+
 def format_currency(amount: float) -> str:
     """
     Formats a float value as a currency string.
-    
+
     Args:
         amount (float): The amount to format.
-    
+
     Returns:
         str: Formatted currency string.
     """
     return f"{amount:,.2f}"
 
+
 def display_results(salary: float, expenses: Dict[str, float], rent: float) -> None:
     """
     Displays the calculated expenses and rent.
-    
+
     Args:
         salary (float): The total salary amount.
         expenses (Dict[str, float]): Dictionary of calculated expenses.
@@ -84,17 +89,19 @@ def display_results(salary: float, expenses: Dict[str, float], rent: float) -> N
         print(f"- {category}: {format_currency(amount)} pesos")
     print(f"- Rent: {format_currency(rent)} pesos")
 
+
 def main() -> None:
     """
     Main function to run the salary expense calculator.
     """
     print("Welcome to the Salary Expense Calculator\n")
-    
+
     salary = get_valid_salary()
     expenses = calculate_expenses(salary)
     rent = calculate_rent(salary, expenses)
-    
+
     display_results(salary, expenses, rent)
+
 
 if __name__ == "__main__":
     try:

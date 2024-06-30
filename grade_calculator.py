@@ -9,21 +9,22 @@ Author: AndresCdo
 
 from typing import Dict, Tuple
 
+
 def get_valid_score(prompt: str) -> float:
     """
     Prompts the user for a valid score input.
-    
+
     Args:
         prompt (str): The prompt to display to the user.
-    
+
     Returns:
         float: A non-negative score value.
     """
     while True:
         score_input = input(prompt)
-        if not score_input.replace('.', '', 1).isdigit():
+        if not score_input.replace(".", "", 1).isdigit():
             print("Invalid input. Please enter a numeric value.")
-                        
+
         else:
             score = float(score_input)
             if score < 0:
@@ -34,31 +35,28 @@ def get_valid_score(prompt: str) -> float:
             else:
                 return score
 
+
 def calculate_final_grade(scores: Dict[str, float]) -> float:
     """
     Calculates the final grade based on the given scores.
-    
+
     Args:
         scores (Dict[str, float]): A dictionary containing scores for each category.
-    
+
     Returns:
         float: The calculated final grade.
     """
-    weights = {
-        "exam": 0.45,
-        "lessons": 0.25,
-        "homework": 0.15,
-        "practice": 0.15
-    }
+    weights = {"exam": 0.45, "lessons": 0.25, "homework": 0.15, "practice": 0.15}
     return sum(scores[category] * weight for category, weight in weights.items())
+
 
 def convert_grade_to_letter(grade: float) -> str:
     """
     Converts a numeric grade to a letter grade.
-    
+
     Args:
         grade (float): The numeric grade to convert.
-    
+
     Returns:
         str: The corresponding letter grade.
     """
@@ -75,24 +73,26 @@ def convert_grade_to_letter(grade: float) -> str:
     else:
         return "A"
 
+
 def main() -> None:
     """
     Main function to run the grade calculator.
     """
     print("Welcome to the Grade Calculator\n")
-    
+
     scores = {
         "exam": get_valid_score("Enter exam score: "),
         "lessons": get_valid_score("Enter lessons score: "),
         "homework": get_valid_score("Enter homework score: "),
-        "practice": get_valid_score("Enter practice score: ")
+        "practice": get_valid_score("Enter practice score: "),
     }
-    
+
     final_grade = calculate_final_grade(scores)
     letter_grade = convert_grade_to_letter(final_grade)
-    
+
     print(f"\nFinal Grade: {final_grade:.2f}")
     print(f"Letter Grade: {letter_grade}")
+
 
 if __name__ == "__main__":
     main()

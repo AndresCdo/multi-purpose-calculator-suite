@@ -3,6 +3,7 @@ Product Price Calculator
 """
 import json
 
+
 def calculate_total_price(products):
     """
     Calculates the total price of a list of products.
@@ -18,13 +19,14 @@ def calculate_total_price(products):
     """
     result = 0.0
     for product in products:
-        price = product['price']
-        discount = product['discount']
-        if product['expiration_date'] == 'today':
+        price = product["price"]
+        discount = product["discount"]
+        if product["expiration_date"] == "today":
             result += (price * (1 - discount / 100)) * 0.8
         else:
             result += price * (1 - discount / 100)
     return round(result, 2)
+
 
 if __name__ == "__main__":
     products = []
@@ -34,5 +36,7 @@ if __name__ == "__main__":
             if len(products) > 0:
                 total_price = calculate_total_price(products)
                 print(total_price)
-        except:
+        except json.JSONDecodeError:  # Catching specific exception
             print("An error has occurred.\nPlease enter a valid input.")
+        except Exception as e:  # Optionally catch other exceptions explicitly
+            print(f"An unexpected error has occurred: {e}\nPlease enter a valid input.")
