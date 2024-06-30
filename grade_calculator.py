@@ -79,6 +79,7 @@ def calculate_grade(grade: float) -> str:
     else:
         return "Invalid grade range"
 
+
 def main() -> None:
     """
     Main function to run the grade calculator.
