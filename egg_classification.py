@@ -1,14 +1,16 @@
 import json
 
+
 def classify_egg(size):
-    if size == 'small':
-        return 'A'
-    elif size == 'medium':
-        return 'AA'
-    elif size == 'large':
-        return 'AAA'
+    if size == "small":
+        return "A"
+    elif size == "medium":
+        return "AA"
+    elif size == "large":
+        return "AAA"
     else:
-        return 'BC'
+        return "BC"
+
 
 def calculate_trays(classification):
     """
@@ -25,34 +27,36 @@ def calculate_trays(classification):
         representing the number of trays needed for the corresponding type of eggs.
     """
     for i in classification:
-        if i['egg_type'] == 'A':
-            i['number_of_trays'] = i['number_of_eggs'] // 30
-        elif i['egg_type'] == 'AA':
-            i['number_of_trays'] = i['number_of_eggs'] // 24
-        elif i['egg_type'] == 'AAA':
-            i['number_of_trays'] = i['number_of_eggs'] // 12
+        if i["egg_type"] == "A":
+            i["number_of_trays"] = i["number_of_eggs"] // 30
+        elif i["egg_type"] == "AA":
+            i["number_of_trays"] = i["number_of_eggs"] // 24
+        elif i["egg_type"] == "AAA":
+            i["number_of_trays"] = i["number_of_eggs"] // 12
         else:
-            i['number_of_trays'] = i['number_of_eggs'] // 30
+            i["number_of_trays"] = i["number_of_eggs"] // 30
+
 
 def egg_classification(egg_data):
     classification = [
-        {'egg_type': 'A', 'number_of_eggs': 0, 'number_of_trays': 0},
-        {'egg_type': 'AA', 'number_of_eggs': 0, 'number_of_trays': 0},
-        {'egg_type': 'AAA', 'number_of_eggs': 0, 'number_of_trays': 0},
-        {'egg_type': 'BC', 'number_of_eggs': 0, 'number_of_trays': 0}
+        {"egg_type": "A", "number_of_eggs": 0, "number_of_trays": 0},
+        {"egg_type": "AA", "number_of_eggs": 0, "number_of_trays": 0},
+        {"egg_type": "AAA", "number_of_eggs": 0, "number_of_trays": 0},
+        {"egg_type": "BC", "number_of_eggs": 0, "number_of_trays": 0},
     ]
     for i in egg_data:
         if 55 <= i < 60:
-            classification[0]['number_of_eggs'] += 1
+            classification[0]["number_of_eggs"] += 1
         elif 60 <= i < 69:
-            classification[1]['number_of_eggs'] += 1
+            classification[1]["number_of_eggs"] += 1
         elif i >= 69:
-            classification[2]['number_of_eggs'] += 1
+            classification[2]["number_of_eggs"] += 1
         elif 43 <= i < 53:
-            classification[3]['number_of_eggs'] += 1
+            classification[3]["number_of_eggs"] += 1
         else:
-            classification[3]['number_of_eggs'] += 1
+            classification[3]["number_of_eggs"] += 1
     return classification
+
 
 if __name__ == "__main__":
     egg_data = json.loads(input())

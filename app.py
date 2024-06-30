@@ -1,5 +1,6 @@
 # app.py
 import sys
+
 from egg_classification import classify_egg
 from grade_calculator import calculate_grade
 from product_price_calculator import calculate_total_price
@@ -30,6 +31,7 @@ def main():
     else:
         print("Invalid choice. Exiting.")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

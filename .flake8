@@ -1,0 +1,20 @@
+[flake8]
+# Paths to exclude from checks
+exclude = 
+    .git,
+    __pycache__,
+    build,
+    dist,
+    .venv
+
+# Maximum allowed line length
+max-line-length = 120
+
+# Maximum complexity allowed
+max-complexity = 10
+
+# Select specific errors or warnings. Example: E,W
+select = E,W
+
+# Ignore specific errors or warnings. Example: E501,W503
+ignore = E501,W503

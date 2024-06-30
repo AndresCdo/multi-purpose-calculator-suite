@@ -5,3 +5,9 @@
 .venv/
 *.pyc
 __pycache__
+
+# Coverage reports
+.coverage
+
+# XML reports
+*.xml

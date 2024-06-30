@@ -1,6 +1,9 @@
-import pytest
 from unittest.mock import patch
+
+import pytest
+
 from salary_expense_calculator import display_results
+
 
 def test_display_results(capsys):
     salary = 50000.0
